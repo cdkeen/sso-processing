@@ -1,4 +1,4 @@
-package gov.fdep.cd.sso_review;
+package gov.floridadep.sso_project;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,25 +22,26 @@ public class SSOReview {
 	}
 	//Method reads .xlsx file
 	static void readExcel() throws IOException {
-		//Get SSO database excel file
-		String excelFilePath = "C:\\Users\\Keen_CD\\OneDrive - Florida Department of Environmental Protection\\Desktop\\SSO\\Data_entry_project\\SSO_database.xlsx";
-		//obtaining input bytes from a file
+		//Point to SSO_database spreadsheet .xlsx file location
+		String excelFilePath = "D:\\FDEP\\SSO_project\\SSO_database.xlsx";
+		//obtaining input bytes from file
 		FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
-		//creating workbook instance that refers to .xlsx file
+		//Create Workbook instance holding reference to file
 		Workbook workbook = new XSSFWorkbook(inputStream);
 		//Get the Sheet object at the given index
 		Sheet firstSheet = workbook.getSheetAt(0);
 		//Returns an iterator of the sheets in the workbook in sheet order
-		Iterator<Row> iterator = firstSheet.iterator();
+/*		Iterator<Row> iterator = firstSheet.iterator();
 				
-		//If this scanner has another token in its input, run the while loop
+		//Iterate through each row one by one
 		while (iterator.hasNext()) {
 		Row nextRow = iterator.next();
+		//For each row, iterate through all the columns
 		Iterator<Cell> cellIterator = nextRow.cellIterator();
 					
 			while (cellIterator.hasNext()) {
 				Cell cell = cellIterator.next();
-						
+				//Check the cell type and format accordingly		
 				switch (cell.getCellType()) {
 					case STRING:
 						System.out.print(cell.getStringCellValue());
@@ -51,13 +52,21 @@ public class SSOReview {
 					case NUMERIC:
 						System.out.print(cell.getNumericCellValue());
 						break;
+					case BLANK:
+						System.out.print("NULL");
 				default:
+						System.out.print("_");
 					break;
 				}
-				System.out.print(" | ");
+				System.out.print(" ");
 			}
 			System.out.println();
 		}
+		// Get the row object at the given index
+*/		Row row = firstSheet.getRow(0);
+		Cell cell = row.getCell(2);
+
+		
 		
 		workbook.close();
 		inputStream.close();		
