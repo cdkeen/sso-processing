@@ -12,7 +12,11 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /*
- * Program reads an SSO database spreadsheet and prints to the console (skips empty cells).
+ * Program reads an SSO check sheet and generates an email update for case managers.
+ * Only works for .xlsx files with a specific database schema.
+ * Code will need to be adapted to any database schema changes.
+ * Make sure SSO data is consistent, otherwise code will break!
+ * 
  */
 
 public class SSOReview {
@@ -22,7 +26,7 @@ public class SSOReview {
 	}
 	//Method reads .xlsx file
 	static void readExcel() throws IOException {
-		//Point to SSO_database spreadsheet .xlsx file location
+		//Get path to SSO database .xlsx file to be read
 		String excelFilePath = "D:\\FDEP\\SSO_project\\SSO_database.xlsx";
 		//obtaining input bytes from file
 		FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
@@ -64,9 +68,10 @@ public class SSOReview {
 		}
 		// Get the row object at the given index
 */		Row row = firstSheet.getRow(1);
+		// Get cell object at the given index
 		Cell cell = row.getCell(33);
+			
 		
-		System.out.print(row.getCell(33));
 
 		//for rows that contain "Jenny" in the "case manager" column
 			//get needed data
