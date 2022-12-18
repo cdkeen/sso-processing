@@ -63,10 +63,13 @@ public class SSOReview {
 			System.out.println();
 		}
 		// Get the row object at the given index
-*/		Row row = firstSheet.getRow(0);
-		Cell cell = row.getCell(2);
-
+*/		Row row = firstSheet.getRow(1);
+		Cell cell = row.getCell(33);
 		
+		System.out.print(row.getCell(33));
+
+		//for rows that contain "Jenny" in the "case manager" column
+			//get needed data
 		
 		workbook.close();
 		inputStream.close();		
