@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.Scanner;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Cell;
@@ -24,20 +25,20 @@ public class SSOReview {
 	public static void main(String[] args) throws IOException {
 		readExcel();
 	}
-	//Method reads .xlsx file
+	// Method reads .xlsx file
 	static void readExcel() throws IOException {
-		//Get path to SSO database .xlsx file to be read
+		// Get path to SSO database .xlsx file to be read
 		String excelFilePath = "D:\\FDEP\\SSO_project\\SSO_database.xlsx";
-		//obtaining input bytes from file
+		// Obtaining input bytes from file
 		FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
-		//Create Workbook instance holding reference to file
+		// Create Workbook instance holding reference to file
 		Workbook workbook = new XSSFWorkbook(inputStream);
-		//Get the Sheet object at the given index
+		// Get the Sheet object at the given index
 		Sheet firstSheet = workbook.getSheetAt(0);
-		//Returns an iterator of the sheets in the workbook in sheet order
-/*		Iterator<Row> iterator = firstSheet.iterator();
+		// Returns an iterator of the sheets in the workbook in sheet order
+		Iterator<Row> iterator = firstSheet.iterator();
 				
-		//Iterate through each row one by one
+/*		//Iterate through each row one by one
 		while (iterator.hasNext()) {
 		Row nextRow = iterator.next();
 		//For each row, iterate through all the columns
@@ -66,17 +67,30 @@ public class SSOReview {
 			}
 			System.out.println();
 		}
-		// Get the row object at the given index
-*/		Row row = firstSheet.getRow(1);
-		// Get cell object at the given index
-		Cell cell = row.getCell(33);
+		
+*/		
+		// Ask user to input the row number that the program will start at
+		Scanner scanner = new Scanner(System.in);
+		System.out.println("Enter starting row number");
+		while (!scanner.hasNextInt()) scanner.next();
+		
+		// For each row (starting at the row specified by the user), do this:
+		for (int rowIndex = scanner.nextInt() - 1; rowIndex <= firstSheet.getLastRowNum(); rowIndex++) {
+			// Return the next row in the iteration
+			Row nextRow = iterator.next();
+			// Return a cell iterator for the row
+			Iterator<Cell> cellIterator = nextRow.cellIterator();
+			// Get the row object at the given index
+			Row row = firstSheet.getRow(rowIndex);
+			// Get cell object at the given index
+			Cell cell = row.getCell(33);
 			
+			System.out.println(cell);
+		}
 		
-
-		//for rows that contain "Jenny" in the "case manager" column
-			//get needed data
-		
+		scanner.close();
 		workbook.close();
-		inputStream.close();		
+		inputStream.close();
+		}
+			
 	}
-}
