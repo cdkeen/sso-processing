@@ -17,7 +17,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
  * Program reads an SSO check sheet and generates an email update for case managers. 
  */
 
-public class SSOReview {
+public class SSOUpdate {
 
 	public static void main(String[] args) throws IOException {
 		readExcel();
