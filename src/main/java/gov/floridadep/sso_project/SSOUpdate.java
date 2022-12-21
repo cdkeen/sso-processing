@@ -38,28 +38,25 @@ public class SSOUpdate {
 		
 		// User inputs the starting row number
 		// The update will include this row and all the following rows until the end of the sheet
-		Scanner scanner = new Scanner(System.in);
+	/*	Scanner scanner = new Scanner(System.in);
 		System.out.println("Enter starting row number:");
 		while (!scanner.hasNextInt()) {
 			System.out.println("Invalid entry, please enter a row number");
 			scanner.next();
 		}
 		Iterator<Row> rowIterator = firstSheet.iterator();
-		//Parent for loop
+	*/	//Parent for loop
 	//	for (int rowIndex = scanner.nextInt() - 1; rowIndex <= firstSheet.getLastRowNum(); rowIndex++) {
 	//		Row nextRow = rowIterator.next();
 	//	}
 		
 		
-		
-/*		for (Sheet sheet : wb ) {
-		    for (Row row : sheet) {
-		        for (Cell cell : row) {
-		            // Do something here
+		for (Row row : firstSheet) {
+		    	Cell caseManagerCell = row.getCell(33);
+		    	System.out.println(caseManagerCell);
 		        }
-		    }
-		}
-*/	
+		  
+		
 		
 			
 		/*	// Returns an iterator for the sheet
@@ -100,7 +97,7 @@ public class SSOUpdate {
 			}
 			
 		*/	
-		scanner.close();	
+	//	scanner.close();	
 		}
 		
 		
