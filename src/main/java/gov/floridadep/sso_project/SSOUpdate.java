@@ -28,7 +28,8 @@ public class SSOUpdate {
 		// Get path to SSO database .xlsx file
 		// Work laptop file path: "C:\\Users\\Keen_CD\\OneDrive - Florida Department of Environmental Protection\\Desktop\\SSO\\Data_entry_project\\SSO_database.xlsx"
 		// Home PC File path: "D:\\FDEP\\SSO_project\\SSO_database.xlsx"
-		String excelFilePath = "C:\\Users\\Keen_CD\\OneDrive - Florida Department of Environmental Protection\\Desktop\\SSO\\Data_entry_project\\SSO_database.xlsx";
+		// Macbook file path: "/Users/cdkeen/Documents/FDEP/sso-project/SSO_database.xlsx"
+		String excelFilePath = "/Users/cdkeen/Documents/FDEP/sso-project/SSO_database.xlsx";
 		// Obtaining input bytes from file
 		FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
 		// Create Workbook instance holding reference to file
@@ -50,10 +51,20 @@ public class SSOUpdate {
 	//		Row nextRow = rowIterator.next();
 	//	}
 		
+		// 1. need to do separate iterations thru the sheet for each case manager (output all data for one case manager at a time)
+		// 2. create an outer loop that reinitializes the condition for the inner loop
+			// outer loop: loop through each case manager
+			// 
+		// 3. inner loop: if the caseManagerCell in this row == "Jenny", get needed cells and print
+			// now check next row... if caseManagerCell != "Jenny", 
+				// return to the outer loop that changes the check to be for another case manager 
+	
+		//	for (cell caseManagerCell : firstSheet)
+			// 
 		
 		for (Row row : firstSheet) {
 		    	Cell caseManagerCell = row.getCell(33);
-		    	System.out.println(caseManagerCell);
+		    	
 		        }
 		  
 		
