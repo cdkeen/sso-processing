@@ -23,52 +23,222 @@ public class SSOUpdate {
 		
 		readExcel();
 	}
-	// Method reads .xlsx file
+	// Method reads .xlsx file and prints cell values
 	static void readExcel() throws IOException {
-		// Get path to SSO database .xlsx file
-		// Work laptop file path: "C:\\Users\\Keen_CD\\OneDrive - Florida Department of Environmental Protection\\Desktop\\SSO\\Data_entry_project\\SSO_database.xlsx"
-		// Home PC File path: "D:\\FDEP\\SSO_project\\SSO_database.xlsx"
-		// Macbook file path: "/Users/cdkeen/Documents/FDEP/sso-project/SSO_database.xlsx"
+		/* 
+		 * Work laptop file path: "C:\\Users\\Keen_CD\\OneDrive - Florida Department of Environmental Protection\\Desktop\\SSO\\Data_entry_project\\SSO_database.xlsx"
+		 * Home PC File path: "D:\\FDEP\\SSO_project\\SSO_database.xlsx"
+		 * Macbook file path: "/Users/cdkeen/Documents/FDEP/sso-project/SSO_database.xlsx"
+		 */
 		String excelFilePath = "/Users/cdkeen/Documents/FDEP/sso-project/SSO_database.xlsx";
-		// Obtaining input bytes from file
-		FileInputStream inputStream = new FileInputStream(new File(excelFilePath));
-		// Create Workbook instance holding reference to file
-		Workbook workbook = new XSSFWorkbook(inputStream);
-		// Get the Sheet object at the given index (returns first sheet in the workbook)
-		Sheet firstSheet = workbook.getSheetAt(0);
+		FileInputStream inputStream = new FileInputStream(new File(excelFilePath)); // Obtaining input bytes from file
+		Workbook workbook = new XSSFWorkbook(inputStream); // Create Workbook instance holding reference to file
+		Sheet firstSheet = workbook.getSheetAt(0); // Get the Sheet object at the given index (returns first sheet in the workbook)
 		
-		// User inputs the starting row number
-		// The update will include this row and all the following rows until the end of the sheet
-	/*	Scanner scanner = new Scanner(System.in);
+	/*	Scanner scanner = new Scanner(System.in); // User inputs the starting row number
 		System.out.println("Enter starting row number:");
 		while (!scanner.hasNextInt()) {
 			System.out.println("Invalid entry, please enter a row number");
 			scanner.next();
 		}
 		Iterator<Row> rowIterator = firstSheet.iterator();
-	*/	//Parent for loop
+	*/
 	//	for (int rowIndex = scanner.nextInt() - 1; rowIndex <= firstSheet.getLastRowNum(); rowIndex++) {
 	//		Row nextRow = rowIterator.next();
 	//	}
 		
-		// 1. need to do separate iterations thru the sheet for each case manager (output all data for one case manager at a time)
-		// 2. create an outer loop that reinitializes the condition for the inner loop
-			// outer loop: loop through each case manager
-			// 
-		// 3. inner loop: if the caseManagerCell in this row == "Jenny", get needed cells and print
-			// now check next row... if caseManagerCell != "Jenny", 
-				// return to the outer loop that changes the check to be for another case manager 
-	
-		//	for (cell caseManagerCell : firstSheet)
-			// 
+		DataFormatter formatter = new DataFormatter(); // Fetch the string value of the case manager cell
 		
+		//Loop thru the sheet for each case manager:
+		System.out.println("Carolyn");
 		for (Row row : firstSheet) {
-		    	Cell caseManagerCell = row.getCell(33);
-		    	
-		        }
-		  
-		
-		
+	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
+	    	Cell caseManagerCell = row.getCell(33);
+	    	Cell dateCell = row.getCell(5);
+			Cell letterCell = row.getCell(28);
+			Cell spillTypeCell = row.getCell(15);
+			Cell spillLocationCell = row.getCell(9);
+			Cell facilityNameCell = row.getCell(3);
+			Cell statusCell = row.getCell(35);
+			
+			if (caseManagerName.contains("Carolyn")) {
+				System.out.print(dateCell + " - ");
+				System.out.print(letterCell + " - ");
+				System.out.print(spillTypeCell + " - ");
+				System.out.print(spillLocationCell + " - ");
+				System.out.print(facilityNameCell + " - ");
+				System.out.print(statusCell);
+				System.out.println();
+			}
+		}
+		System.out.println("Jenny");
+		for (Row row : firstSheet) {
+	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
+	    	Cell caseManagerCell = row.getCell(33);
+	    	Cell dateCell = row.getCell(5);
+			Cell letterCell = row.getCell(28);
+			Cell spillTypeCell = row.getCell(15);
+			Cell spillLocationCell = row.getCell(9);
+			Cell facilityNameCell = row.getCell(3);
+			Cell statusCell = row.getCell(35);
+			
+			if (caseManagerName.contains("Jenny")) {
+				System.out.print(dateCell + " - ");
+				System.out.print(letterCell + " - ");
+				System.out.print(spillTypeCell + " - ");
+				System.out.print(spillLocationCell + " - ");
+				System.out.print(facilityNameCell + " - ");
+				System.out.print(statusCell);
+				System.out.println();
+			}
+		}
+		System.out.println("Amanda");
+		for (Row row : firstSheet) {
+	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
+	    	Cell caseManagerCell = row.getCell(33);
+	    	Cell dateCell = row.getCell(5);
+			Cell letterCell = row.getCell(28);
+			Cell spillTypeCell = row.getCell(15);
+			Cell spillLocationCell = row.getCell(9);
+			Cell facilityNameCell = row.getCell(3);
+			Cell statusCell = row.getCell(35);
+			
+			if (caseManagerName.contains("Amanda")) {
+				System.out.print(dateCell + " - ");
+				System.out.print(letterCell + " - ");
+				System.out.print(spillTypeCell + " - ");
+				System.out.print(spillLocationCell + " - ");
+				System.out.print(facilityNameCell + " - ");
+				System.out.print(statusCell);
+				System.out.println();
+			}
+		}
+		System.out.println("Gina");
+		for (Row row : firstSheet) {
+	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
+	    	Cell caseManagerCell = row.getCell(33);
+	    	Cell dateCell = row.getCell(5);
+			Cell letterCell = row.getCell(28);
+			Cell spillTypeCell = row.getCell(15);
+			Cell spillLocationCell = row.getCell(9);
+			Cell facilityNameCell = row.getCell(3);
+			Cell statusCell = row.getCell(35);
+			
+			if (caseManagerName.contains("Gina")) {
+				System.out.print(dateCell + " - ");
+				System.out.print(letterCell + " - ");
+				System.out.print(spillTypeCell + " - ");
+				System.out.print(spillLocationCell + " - ");
+				System.out.print(facilityNameCell + " - ");
+				System.out.print(statusCell);
+				System.out.println();
+			}
+		}
+		System.out.println("Manny");
+		for (Row row : firstSheet) {
+	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
+	    	Cell caseManagerCell = row.getCell(33);
+	    	Cell dateCell = row.getCell(5);
+			Cell letterCell = row.getCell(28);
+			Cell spillTypeCell = row.getCell(15);
+			Cell spillLocationCell = row.getCell(9);
+			Cell facilityNameCell = row.getCell(3);
+			Cell statusCell = row.getCell(35);
+			
+			if (caseManagerName.contains("Manny")) {
+				System.out.print(dateCell + " - ");
+				System.out.print(letterCell + " - ");
+				System.out.print(spillTypeCell + " - ");
+				System.out.print(spillLocationCell + " - ");
+				System.out.print(facilityNameCell + " - ");
+				System.out.print(statusCell);
+				System.out.println();
+			}
+		}
+		System.out.println("Hannah");
+		for (Row row : firstSheet) {
+	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
+	    	Cell caseManagerCell = row.getCell(33);
+	    	Cell dateCell = row.getCell(5);
+			Cell letterCell = row.getCell(28);
+			Cell spillTypeCell = row.getCell(15);
+			Cell spillLocationCell = row.getCell(9);
+			Cell facilityNameCell = row.getCell(3);
+			Cell statusCell = row.getCell(35);
+			
+			if (caseManagerName.contains("Hannah")) {
+				System.out.print(dateCell + " - ");
+				System.out.print(letterCell + " - ");
+				System.out.print(spillTypeCell + " - ");
+				System.out.print(spillLocationCell + " - ");
+				System.out.print(facilityNameCell + " - ");
+				System.out.print(statusCell);
+				System.out.println();
+			}
+		}
+		System.out.println("Cory");
+		for (Row row : firstSheet) {
+	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
+	    	Cell caseManagerCell = row.getCell(33);
+	    	Cell dateCell = row.getCell(5);
+			Cell letterCell = row.getCell(28);
+			Cell spillTypeCell = row.getCell(15);
+			Cell spillLocationCell = row.getCell(9);
+			Cell facilityNameCell = row.getCell(3);
+			Cell statusCell = row.getCell(35);
+			
+			if (caseManagerName.contains("Cory")) {
+				System.out.print(dateCell + " - ");
+				System.out.print(letterCell + " - ");
+				System.out.print(spillTypeCell + " - ");
+				System.out.print(spillLocationCell + " - ");
+				System.out.print(facilityNameCell + " - ");
+				System.out.print(statusCell);
+				System.out.println();
+			}
+		}
+		System.out.println("Trey");
+		for (Row row : firstSheet) {
+	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
+	    	Cell caseManagerCell = row.getCell(33);
+	    	Cell dateCell = row.getCell(5);
+			Cell letterCell = row.getCell(28);
+			Cell spillTypeCell = row.getCell(15);
+			Cell spillLocationCell = row.getCell(9);
+			Cell facilityNameCell = row.getCell(3);
+			Cell statusCell = row.getCell(35);
+			
+			if (caseManagerName.contains("Trey")) {
+				System.out.print(dateCell + " - ");
+				System.out.print(letterCell + " - ");
+				System.out.print(spillTypeCell + " - ");
+				System.out.print(spillLocationCell + " - ");
+				System.out.print(facilityNameCell + " - ");
+				System.out.print(statusCell);
+				System.out.println();
+			}
+		}
+		System.out.println("Sean");
+		for (Row row : firstSheet) {
+	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
+	    	Cell caseManagerCell = row.getCell(33);
+	    	Cell dateCell = row.getCell(5);
+			Cell letterCell = row.getCell(28);
+			Cell spillTypeCell = row.getCell(15);
+			Cell spillLocationCell = row.getCell(9);
+			Cell facilityNameCell = row.getCell(3);
+			Cell statusCell = row.getCell(35);
+			
+			if (caseManagerName.contains("Sean")) {
+				System.out.print(dateCell + " - ");
+				System.out.print(letterCell + " - ");
+				System.out.print(spillTypeCell + " - ");
+				System.out.print(spillLocationCell + " - ");
+				System.out.print(facilityNameCell + " - ");
+				System.out.print(statusCell);
+				System.out.println();
+			}
+		}
 			
 		/*	// Returns an iterator for the sheet
 		Iterator<Row> rowIterator = firstSheet.iterator();			
@@ -86,33 +256,12 @@ public class SSOUpdate {
 			// Fetch the string value of the case manager cell
 			DataFormatter formatter = new DataFormatter();
 			String caseManager = formatter.formatCellValue(caseManagerCell);
-			// Check for who the case manager is for the row and act accordingly:
-			switch (caseManager) {
-				case "Carolyn - Brevard, City of Winter Park":
-					
-					Cell dateCell = row.getCell(5);
-					Cell letterCell = row.getCell(28);
-					Cell spillTypeCell = row.getCell(15);
-					Cell spillLocationCell = row.getCell(9);
-					Cell facilityNameCell = row.getCell(3);
-					Cell statusCell = row.getCell(35);	
-					
-					System.out.print(dateCell + " - ");
-					System.out.print(letterCell + " - ");
-					System.out.print(spillTypeCell + " - ");
-					System.out.print(spillLocationCell + " - ");
-					System.out.print(facilityNameCell + " - ");
-					System.out.print(statusCell);
-					System.out.println();
-					break;			
-			}
 			
 		*/	
-	//	scanner.close();	
-		}
+	//	scanner.close();
+		workbook.close();
+	}
 		
-		
-	//	workbook.close();
 		//inputStream.close();
-		}
+}
 			
