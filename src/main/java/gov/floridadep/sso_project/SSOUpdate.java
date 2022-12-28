@@ -3,8 +3,6 @@ package gov.floridadep.sso_project;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import java.util.Iterator;
-import java.util.Scanner;
 
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Cell;
@@ -14,16 +12,15 @@ import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 /*
- * Program reads an SSO check sheet and generates an email update for case managers. 
+ * Program reads an SSO excel check sheet and prints a spill update for each case manager to the console. 
  */
 
 public class SSOUpdate {
 
 	public static void main(String[] args) throws IOException {
-		
 		readExcel();
 	}
-	// Method reads .xlsx file and prints cell values
+	// Method reads .xlsx file and prints specified cell values
 	static void readExcel() throws IOException {
 		/* 
 		 * Work laptop file path: "C:\\Users\\Keen_CD\\OneDrive - Florida Department of Environmental Protection\\Desktop\\SSO\\Data_entry_project\\SSO_database.xlsx"
@@ -34,26 +31,23 @@ public class SSOUpdate {
 		FileInputStream inputStream = new FileInputStream(new File(excelFilePath)); // Obtaining input bytes from file
 		Workbook workbook = new XSSFWorkbook(inputStream); // Create Workbook instance holding reference to file
 		Sheet firstSheet = workbook.getSheetAt(0); // Get the Sheet object at the given index (returns first sheet in the workbook)
-		
-	/*	Scanner scanner = new Scanner(System.in); // User inputs the starting row number
+	/*	
+		Scanner scanner = new Scanner(System.in); // User inputs the starting row number
 		System.out.println("Enter starting row number:");
 		while (!scanner.hasNextInt()) {
 			System.out.println("Invalid entry, please enter a row number");
 			scanner.next();
 		}
-		Iterator<Row> rowIterator = firstSheet.iterator();
-	*/
-	//	for (int rowIndex = scanner.nextInt() - 1; rowIndex <= firstSheet.getLastRowNum(); rowIndex++) {
-	//		Row nextRow = rowIterator.next();
-	//	}
+		int rowIndex = scanner.nextInt() - 1;
+	*/	
+	//	Iterator<Row> rowIterator = firstSheet.iterator(); // Get an iterator for the sheet
+	//	Row row = rowIterator.next();
 		
 		DataFormatter formatter = new DataFormatter(); // Fetch the string value of the case manager cell
-		
 		//Loop thru the sheet for each case manager:
 		System.out.println("Carolyn");
 		for (Row row : firstSheet) {
 	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
-	    	Cell caseManagerCell = row.getCell(33);
 	    	Cell dateCell = row.getCell(5);
 			Cell letterCell = row.getCell(28);
 			Cell spillTypeCell = row.getCell(15);
@@ -71,10 +65,10 @@ public class SSOUpdate {
 				System.out.println();
 			}
 		}
+		System.out.println();
 		System.out.println("Jenny");
 		for (Row row : firstSheet) {
 	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
-	    	Cell caseManagerCell = row.getCell(33);
 	    	Cell dateCell = row.getCell(5);
 			Cell letterCell = row.getCell(28);
 			Cell spillTypeCell = row.getCell(15);
@@ -92,10 +86,10 @@ public class SSOUpdate {
 				System.out.println();
 			}
 		}
+		System.out.println();
 		System.out.println("Amanda");
 		for (Row row : firstSheet) {
 	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
-	    	Cell caseManagerCell = row.getCell(33);
 	    	Cell dateCell = row.getCell(5);
 			Cell letterCell = row.getCell(28);
 			Cell spillTypeCell = row.getCell(15);
@@ -113,10 +107,10 @@ public class SSOUpdate {
 				System.out.println();
 			}
 		}
+		System.out.println();
 		System.out.println("Gina");
 		for (Row row : firstSheet) {
 	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
-	    	Cell caseManagerCell = row.getCell(33);
 	    	Cell dateCell = row.getCell(5);
 			Cell letterCell = row.getCell(28);
 			Cell spillTypeCell = row.getCell(15);
@@ -134,10 +128,10 @@ public class SSOUpdate {
 				System.out.println();
 			}
 		}
+		System.out.println();
 		System.out.println("Manny");
 		for (Row row : firstSheet) {
 	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
-	    	Cell caseManagerCell = row.getCell(33);
 	    	Cell dateCell = row.getCell(5);
 			Cell letterCell = row.getCell(28);
 			Cell spillTypeCell = row.getCell(15);
@@ -155,10 +149,10 @@ public class SSOUpdate {
 				System.out.println();
 			}
 		}
+		System.out.println();
 		System.out.println("Hannah");
 		for (Row row : firstSheet) {
 	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
-	    	Cell caseManagerCell = row.getCell(33);
 	    	Cell dateCell = row.getCell(5);
 			Cell letterCell = row.getCell(28);
 			Cell spillTypeCell = row.getCell(15);
@@ -176,10 +170,10 @@ public class SSOUpdate {
 				System.out.println();
 			}
 		}
+		System.out.println();
 		System.out.println("Cory");
 		for (Row row : firstSheet) {
 	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
-	    	Cell caseManagerCell = row.getCell(33);
 	    	Cell dateCell = row.getCell(5);
 			Cell letterCell = row.getCell(28);
 			Cell spillTypeCell = row.getCell(15);
@@ -197,10 +191,10 @@ public class SSOUpdate {
 				System.out.println();
 			}
 		}
+		System.out.println();
 		System.out.println("Trey");
 		for (Row row : firstSheet) {
 	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
-	    	Cell caseManagerCell = row.getCell(33);
 	    	Cell dateCell = row.getCell(5);
 			Cell letterCell = row.getCell(28);
 			Cell spillTypeCell = row.getCell(15);
@@ -218,10 +212,10 @@ public class SSOUpdate {
 				System.out.println();
 			}
 		}
+		System.out.println();
 		System.out.println("Sean");
 		for (Row row : firstSheet) {
 	    	String caseManagerName = formatter.formatCellValue(row.getCell(33));
-	    	Cell caseManagerCell = row.getCell(33);
 	    	Cell dateCell = row.getCell(5);
 			Cell letterCell = row.getCell(28);
 			Cell spillTypeCell = row.getCell(15);
@@ -240,8 +234,7 @@ public class SSOUpdate {
 			}
 		}
 			
-		/*	// Returns an iterator for the sheet
-		Iterator<Row> rowIterator = firstSheet.iterator();			
+		/*				
 			
 		// For each row (starting at the row specified by the user), do this:
 		for (int rowIndex = scanner.nextInt() - 1; rowIndex <= firstSheet.getLastRowNum(); rowIndex++) {
@@ -258,10 +251,8 @@ public class SSOUpdate {
 			String caseManager = formatter.formatCellValue(caseManagerCell);
 			
 		*/	
-	//	scanner.close();
 		workbook.close();
+		inputStream.close();
 	}
-		
-		//inputStream.close();
 }
 			
